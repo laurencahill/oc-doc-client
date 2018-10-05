@@ -7,25 +7,31 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 5px 15px 5px 15px;
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
   top: 0;
   left: 0;
+  right: 0;
   z-index: 99;
   background-color: white;
+  color: #353535;
+  font-family: 'Montserrat';
 }
 
 .nav-style {
   text-align: right;
   margin: 10px;
+  color: #353535;
 }
 
 .nav-style li {
   list-style: none;
   display: inline;
-  margin: 0 10px;
+  margin: 0 30px 0px 10px;
+  color: #353535;
+
 }
 
 .nav-style a {
@@ -38,4 +44,8 @@
   font-weight: bold;
   background-color: turquoise;
   font-size: 35px;
+}
+
+.logo {
+  width: 150px;
 }

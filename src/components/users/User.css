@@ -58,8 +58,8 @@
     flex-direction: column;
     background-color: white;
     padding: 30px 55px 30px 55px;
-    border-radius: 15px;
-    filter: drop-shadow(0 0 30px #B4B2B4);
+    border-radius: 5px;
+    filter: drop-shadow(0 0 2px #B4B2B4);
     width: 400px;
     margin: 25px;
 }

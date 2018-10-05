@@ -29,21 +29,21 @@ class Navbar extends Component {
       return(
         <div className="nav">
         <div className="logo">
-        <img src="./images/logo.png" width="50px" alt="Logo"/>
+        <img src="./images/ocdoc3.png" width="150px" alt="OcDoc"/>
         </div>
         <nav className="nav-style">
           <ul>
             <li>
-            <NavLink to="/doctors" activeStyle={{fontWeight: 'bold', color: 'blue'}}>DOCTORS</NavLink>
+            <NavLink to="/doctors" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Find an ocularist</NavLink>
             </li>
             <li>
-            <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>SUBMIT</NavLink>
+            <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Add your ocularist</NavLink>
             </li>
             <li>
-            <NavLink to="/account" activeStyle={{fontWeight: 'bold', color: 'blue'}}>ACCOUNT</NavLink>
+            <NavLink to="/account" activeStyle={{fontWeight: 'bold', color: 'blue'}}>View account</NavLink>
             </li>
             <li>
-            <NavLink to="/logout" activeStyle={{fontWeight: 'bold', color: 'blue'}} onClick={()=>this.logout()}>LOGOUT</NavLink>
+            <NavLink to="/logout" activeStyle={{fontWeight: 'bold', color: 'blue'}} onClick={()=>this.logout()}>Logout</NavLink>
             </li>
           </ul>
           </nav>
@@ -53,25 +53,25 @@ class Navbar extends Component {
       return (
         <div className="nav">
         <div className="logo">
-        <img src="./images/logo.png" width="50px" alt="Logo"/>
+        <img src="./images/ocdoc3.png" width="150px"  alt="OcDoc"/>
         </div>
 
         <nav className="nav-style">
           <ul>
             <li>
-            <NavLink to="/doctors" activeStyle={{fontWeight: 'bold', color: 'blue'}}>DOCTORS</NavLink>
+            <NavLink to="/doctors" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Find an ocularist</NavLink>
             </li>
             <li>
-            <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>SUBMIT</NavLink>
+            <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Add your ocularist</NavLink>
             </li>
             <li>
-            <NavLink to="/account" activeStyle={{fontWeight: 'bold', color: 'blue'}}>ACCOUNT</NavLink>
+            <NavLink to="/account" activeStyle={{fontWeight: 'bold', color: 'blue'}}>View account</NavLink>
             </li>
             <li>
-            <NavLink to="/signup" activeStyle={{fontWeight: 'bold', color: 'blue'}}>SIGNUP</NavLink>
+            <NavLink to="/signup" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Signup</NavLink>
             </li>
             <li>
-            <NavLink to="/login" activeStyle={{fontWeight: 'bold', color: 'blue'}}>LOGIN</NavLink>
+            <NavLink to="/login" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Login</NavLink>
             </li>
           </ul>
           </nav>
