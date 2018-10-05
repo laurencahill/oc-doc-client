@@ -14,10 +14,10 @@ class AddDoctor extends Component {
     const docName = this.state.docName;
     const specialties = this.state.specialties;
     const docDetails = this.state.docDetails;
-    axios.post("http://localhost:5000/api/doctors", {docName, specialties, docDetails, })
+    axios.post("http://localhost:5000/api/doctors/create", {docName, specialties, docDetails})
     .then( () => {
         this.props.getData();
-        this.setState({ docName: "", specialties:[], docDetails:"", });
+        this.setState({ docName: "", specialties:[], docDetails:""});
     })
     .catch( error => console.log(error) )
   }
@@ -40,6 +40,7 @@ class AddDoctor extends Component {
           <input type="text" name="docDetails" value={this.state.docDetails} onChange={ e => this.handleChange(e)}/>
           <input type="submit" value="Sumit Doctor" />
         </form>
+
       </div>
     )
   }

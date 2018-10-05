@@ -31,9 +31,10 @@ class Signup extends Component {
             userLocation: ""
         });
         this.props.setTheUserInTheAppComponent(theUserObject)
-    })
-    .catch( error => console.log(error) )
-  }
+        this.props.history.push('/doctors'); 
+      })
+       .catch( error => console.log(error) )
+      }
   
   handleChange = (event) => {  
     const {name, value} = event.target;
@@ -58,7 +59,7 @@ class Signup extends Component {
           <input type="text" name="lastName" className="apply-input" value={this.state.lastName} placeholder="Doe" onChange={ e => this.handleChange(e)}/>
           <label className="label-full">Location:</label>
           <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} placeholder="city, state, country" onChange={ e => this.handleChange(e)} />
-          <input type="submit" value="Signup"  />
+          <input type="submit" value="Signup" />
         </div>
         </form>
         <p>Already have account? 
@@ -68,7 +69,6 @@ class Signup extends Component {
       </div>
     )
   }
-
 
 }
 

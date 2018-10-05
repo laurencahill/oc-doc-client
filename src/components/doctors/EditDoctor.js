@@ -20,11 +20,11 @@ class EditDoctor extends Component {
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/api/doctors/${this.props.theDoctor._id}`, {docName, specialties, docDetails, })
+    axios.put(`http://localhost:5000/api/doctors/${this.props.theDoctor._id}`, {docName, specialties, docDetails})
     .then( () => {
         this.props.getTheDoctor();
         // after submitting the form, redirect to '/doctors'
-        this.props.history.push('/doctors');    
+        this.props.history.push('/doctors');   
     })
     .catch( error => console.log(error) )
   }

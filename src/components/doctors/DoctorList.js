@@ -3,19 +3,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import AddDoctor from './AddDoctor';
-
 class DoctorList extends Component {
   constructor(){
       super();
-      this.state = { listOfDoctors: [] };
+      this.state = { listOfDocs: [] };
   }
 
   getAllDoctors= () =>{
     axios.get(`http://localhost:5000/api/doctors`)
-    .then(responseFromApi => {
+    .then(response => {
       this.setState({
-        listOfDoctors: responseFromApi.data
+        listOfDocs: response.data.listOfDocs
       })
     })
     .catch((err)=>{
@@ -31,20 +29,20 @@ class DoctorList extends Component {
     return(
       <div>
         <div>
-          { this.state.listOfDoctors.map((doctor, index) => {
+          { this.state.listOfDocs.map((doctor, index) => {
             return (
               <div key={doctor._id}>
+              <img src="{doctor.docImage}" alt="docImage"/>
                 <Link to={`/doctors/${doctor._id}`}>
                   <h3>{doctor.docName}</h3>
                 </Link>
-                <p style={{maxWidth: '400px'}} >{doctor.docDetails} </p>
+                <p>Average Rating: {doctor.avgRating}</p>
+                <p>Specialties: {doctor.specialties}</p>
+                <p>Details: {doctor.docDetails} </p>
               </div>
             )})
           }
         </div>
-        {/* <div style={{width: '40%', float:"right"}}>
-            <AddDoctor getData={() => this.getAllDoctors()}/>
-        </div> */}
       </div>
     )
   }
