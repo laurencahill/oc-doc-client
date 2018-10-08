@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
-import EditDoctor from './EditDoctor';
+import { Link } from 'react-router-dom';
 import CommentList from '../comments/CommentList';
 import AddComment from '../comments/AddComment';
 
 class DoctorDetails extends Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {avgRating: 0};
 }
 
 componentDidMount(){
@@ -21,25 +20,18 @@ getDoc = () => {
     .then(response =>{
         const theDoc = response.data;
         this.setState(theDoc);
+        console.log(">>>>>", this.state)
     })
     .catch((err)=>{
         console.log(err)
     })
 }
 
-renderEditForm = () => {
-  if(!this.state.docName){
-      this.getDoc();
-      } else {                                                                                      
-      return <EditDoctor theDoc={this.state} getTheDoc={this.getDoc} {...this.props} />
-      }
-  }
-
 deleteDoc = () => {
   const { params } = this.props.match;
-  axios.delete(`http://localhost:5000/api/doctors/${params.id}`)
+  axios.delete(`http://localhost:5000/api/doctors/delete/${params.id}`)
   .then( response =>{
-      this.props.history.push('/doctors');     
+      this.props.history.push('/doctors'); 
   })
   .catch((err)=>{
       console.log(err)
@@ -47,13 +39,16 @@ deleteDoc = () => {
 }
  
 render(){
+  var rating = this.state.avgRating
+  console.log(rating.toFixed(1))
   return(
     <div>
       <h1>{this.state.docName}</h1>
-      <p>{this.state.specialties}</p>
-      <p>{this.state.docDetails}</p>
+      <p>Rating: {this.state.avgRating.toFixed(1)}</p>
+      <p>Specialties: {this.state.specialties}</p>
+      <p>Details: {this.state.docDetails}</p>
       <button onClick={() => this.deleteDoc()}>Delete Doctor</button>
-      <button onClick={() => this.renderEditForm()}>Edit Doctor</button>
+      <Link to={`/doctors/edit/${this.state._id}`}>Edit Doctor</Link>
     <div>
     <CommentList theDoc= {this.state}/>
     </div>

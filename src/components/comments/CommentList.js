@@ -7,15 +7,8 @@ class CommentList extends Component {
       this.state = {};
   }
 
-  // showComments = () => {
-  //   if(!this.state.docComments) {
-  //     this.getDoc();
-  //   }else {
-  //     return <CommentList theDoc={this.state} />
-  //   }
-  // }
-
   showComments = () => {
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     if(this.props.theDoc.docComments) {
       return (
         this.props.theDoc.docComments.map((comment, index) => {
@@ -28,6 +21,7 @@ class CommentList extends Component {
             </div>
             <div className="comment">
               <p className="label-full">Upload Date:</p> <p> {comment.uploadDate}</p>
+              {/* <p> {typeof(comment.uploadDate)} </p> */}
             </div>
             </div>
             <div className="comment-details">
@@ -44,6 +38,7 @@ class CommentList extends Component {
             <div className="comment">
               <p className="label-full">Comments:</p> <p> {comment.comment}</p>
             </div>
+            
             </div>
             </div>
           )})

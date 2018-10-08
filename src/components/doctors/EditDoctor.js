@@ -4,46 +4,56 @@ import axios from 'axios';
 class EditDoctor extends Component {
   constructor(props){
     super(props);
-    this.state = {
-        docName: this.props.theDoctor.docName, 
-        specialties: this.props.theDoctor.specialties,
-        // locationID: this.props.theDoctor.locationID, 
-        docDetails: this.props.theDoctor.docDetails,
-    }
+    this.state = {};
   }
 
   handleFormSubmit = (event) => {
+    event.preventDefault();
     const docName = this.state.docName;
     const specialties = this.state.specialties;
     const docDetails = this.state.docDetails;
 
-    event.preventDefault();
-
-    axios.put(`http://localhost:5000/api/doctors/${this.props.theDoctor._id}`, {docName, specialties, docDetails})
-    .then( () => {
-        this.props.getTheDoctor();
+    axios.put(`http://localhost:5000/api/doctors/edit/${this.state._id}`, {docName, specialties, docDetails},{withCredentials: true})
+    .then( (response) => {
+        this.getDoc();
         // after submitting the form, redirect to '/doctors'
         this.props.history.push('/doctors');   
     })
     .catch( error => console.log(error) )
   }
 
-  handleChangeDocName = (event) => {  
+getDoc = () => {
+    const { params } = this.props.match;
+    axios.get(`http://localhost:5000/api/doctors/edit/${params.id}`)
+    .then(response =>{
+        const theDoc = response.data;
+        this.setState(theDoc);
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+  handleChangeDocName = (e) => {  
     this.setState({
-      docName:event.target.value
+      docName:e.target.value
     })
   }
 
-  handleChangeSpecialties = (event) => {  
+  handleChangeSpecialties = (e) => {  
     this.setState({
-      specialties:event.target.value
+      specialties:e.target.value
     })
   }
 
-  handleChangeDocDetails = (event) => {  
+  handleChangeDocDetails = (e) => {  
     this.setState({
-      docDetails:event.target.value
+      docDetails:e.target.value
     })
+  }
+
+  componentDidMount(){
+    this.getDoc();
   }
 
   render(){
@@ -53,7 +63,7 @@ class EditDoctor extends Component {
           <label>Name:</label>
           <input type="text" name="docName" value={this.state.docName} onChange={e => this.handleChangeDocName(e)}/>
           <label>Specialties:</label>
-          <input type="checkbox" name="specialties" value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
+          <input type="text" name="specialties" value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
           <label>Details:</label>
           <textarea name="details" value={this.state.docDetails} onChange={e => this.handleChangeDocDetails(e)} />
           

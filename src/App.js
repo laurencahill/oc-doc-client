@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import DoctorList from './components/doctors/DoctorList';
 import AddDoctor from './components/doctors/AddDoctor';
+import EditDoctor from './components/doctors/EditDoctor';
 import DoctorDetails from './components/doctors/DoctorDetails';
 import Signup from './components/users/Signup';
 import Login from './components/users/Login';
@@ -52,9 +53,11 @@ class App extends Component {
             <Route exact path="/doctors" component={DoctorList}/>
               <Route exact path="/doctors/create" component={AddDoctor} />
               <Route exact path="/doctors/:id" component={DoctorDetails} />
+              <Route exact path="/doctors/edit/:id" component={EditDoctor}/>
             <Route exact path="/login" render={() => <Login {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
             <Route exact path='/signup' render={() => <Signup {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
             <Route exact path="/account" component={UserAccount}/>
+
           </Switch>
           </div>
  
