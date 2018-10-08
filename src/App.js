@@ -6,6 +6,7 @@ import AddDoctor from './components/doctors/AddDoctor';
 import DoctorDetails from './components/doctors/DoctorDetails';
 import Signup from './components/users/Signup';
 import Login from './components/users/Login';
+import UserAccount from './components/users/UserAccount';
 import AuthService from './components/auth/auth-service';
 
 import { Switch, Route } from 'react-router-dom';
@@ -53,6 +54,7 @@ class App extends Component {
               <Route exact path="/doctors/:id" component={DoctorDetails} />
             <Route exact path="/login" render={() => <Login {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
             <Route exact path='/signup' render={() => <Signup {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
+            <Route exact path="/account" component={UserAccount}/>
           </Switch>
           </div>
  

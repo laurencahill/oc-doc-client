@@ -3,6 +3,7 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import EditDoctor from './EditDoctor';
 import CommentList from '../comments/CommentList';
+import AddComment from '../comments/AddComment';
 
 class DoctorDetails extends Component {
   constructor(props){
@@ -55,6 +56,9 @@ render(){
       <button onClick={() => this.renderEditForm()}>Edit Doctor</button>
     <div>
     <CommentList theDoc= {this.state}/>
+    </div>
+    <div>
+    <AddComment theDoc= {this.state} />
     </div>
     
     </div>

@@ -38,7 +38,7 @@ class AddDoctor extends Component {
           <input type="text" name="specialties" value={this.state.specialties} onChange={ e => this.handleChange(e)}/>
           <label>Details:</label>
           <input type="text" name="docDetails" value={this.state.docDetails} onChange={ e => this.handleChange(e)}/>
-          <input type="submit" value="Sumit Doctor" />
+          <input type="submit" value="Submit Doctor" />
         </form>
 
       </div>

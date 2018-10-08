@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Comment.css';
 
 class CommentList extends Component {
   constructor(props){
@@ -6,34 +7,59 @@ class CommentList extends Component {
       this.state = {};
   }
 
+  // showComments = () => {
+  //   if(!this.state.docComments) {
+  //     this.getDoc();
+  //   }else {
+  //     return <CommentList theDoc={this.state} />
+  //   }
+  // }
+
   showComments = () => {
-    if(!this.state.docComments) {
-      this.getDoc();
-    }else {
-      return <CommentList theDoc={this.state} />
-    }
+    if(this.props.theDoc.docComments) {
+      return (
+        this.props.theDoc.docComments.map((comment, index) => {
+          return (
+            <div key={comment._id}  className="comment-info">
+            <div className="form-container">
+            <div className="comment-details">
+            <div className="comment">
+              <p className="label-full">Author:</p> <p>{comment.author}</p>
+            </div>
+            <div className="comment">
+              <p className="label-full">Upload Date:</p> <p> {comment.uploadDate}</p>
+            </div>
+            </div>
+            <div className="comment-details">
+            <div className="comment">  
+              <p className="label-full">Visit Date:</p> <p> {comment.visitDate} </p>
+            </div>
+            <div className="comment"> 
+              <p className="label-full">Rating: </p> <p>{comment.rating}</p>
+            </div>
+            </div>
+            <div className="comment">
+              <p className="label-full">Reason for Visit:</p> <p> {comment.visitReason} </p>
+            </div>
+            <div className="comment">
+              <p className="label-full">Comments:</p> <p> {comment.comment}</p>
+            </div>
+            </div>
+            </div>
+          )})
+        )
+      }
   }
 
   render(){
+    console.log(this.props.theDoc.docComments);
     return(
       <div>
-        <div>
-          { this.props.theDoc.docComments.map((comment, index) => {
-            return (
-              <div key={comment._id}>
-                <p>Author: {comment.author}</p>
-                <p>uploadDate: {comment.uploadDate}</p>
-                <p>visitDate: {comment.visitDate} </p>
-                <p>rating: {comment.rating}</p>
-                <p>visitReason: {comment.visitReason} </p>
-                <p>comment: {comment.comment}</p>
-              </div>
-            )})
-          }
-        </div>
+      {this.showComments()}
       </div>
     )
   }
 }
+
 
 export default CommentList;
