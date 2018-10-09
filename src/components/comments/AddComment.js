@@ -16,7 +16,7 @@ class AddComment extends Component {
     const rating = this.state.rating;
     const visitReason = this.state.visitReason;
     const comment = this.state.comment;
-    axios.post(`http://localhost:5000/api/doctors/${this.props.theDoc._id}`, { visitDate, rating, visitReason, comment }, {withCredentials: true})
+    axios.post(process.env.BASE_URL+`/doctors/${this.props.theDoc._id}`, { visitDate, rating, visitReason, comment }, {withCredentials: true})
     .then( (response) => {
         console.log("-------------", response )
         this.props.getData();

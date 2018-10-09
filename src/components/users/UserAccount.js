@@ -9,7 +9,7 @@ class UserAccount extends Component {
   }
 
   getAccountDetails= () =>{
-    axios.get(`http://localhost:5000/api/account`, {withCredentials: true})
+    axios.get(process.env.BASE_URL+`/account/${this.state._id}`, {withCredentials: true})
     .then(response => {
       this.setState({
         userImage: response.data.theUser.userImage,
@@ -28,7 +28,7 @@ class UserAccount extends Component {
   deleteUser = () => {
     const { params } = this.props.match;
     console.log(">>>>>>>>>>>>>>calling delete function")
-    axios.delete(`http://localhost:5000/api/delete/${params.id}`)
+    axios.delete(process.env.BASE_URL+`/delete/${params.id}`)
     .then( response =>{
       console.log("/////////////the response from delete", response)
         this.props.history.push('/signup');

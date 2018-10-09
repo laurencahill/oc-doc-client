@@ -7,17 +7,16 @@ class EditUser extends Component {
     this.state = {};
   }
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+  handleFormSubmit = (event) => {
+    event.preventDefault();
     const userImage = this.state.userImage;
     const username = this.state.username;
     const emailAddress = this.state.emailAddress;
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
     const userLocation = this.state.userLocation;
-    // const user = this.state.loggedInUser
     console.log("~~~~~~~~~~~~updating user info")
-    axios.post(`http://localhost:5000/api/edit`, {userImage, username, emailAddress, firstName, lastName, userLocation},{withCredentials: true})
+    axios.post(process.env.BASE_URL+`/edit/${this.state._id}`, {userImage, username, emailAddress, firstName, lastName, userLocation},{withCredentials: true})
     .then( (response) => {
       console.log("```````````````response from update", response)
         this.getUser();
@@ -27,8 +26,8 @@ class EditUser extends Component {
   }
 
 getUser = () => {
-    // const { params } = this.props.match;
-    axios.post(`http://localhost:5000/api/edit`)
+    const { params } = this.props.match;
+    axios.post(process.env.BASE_URL+`/edit/${params.id}`)
     .then(response =>{
         const theUser = response.data;
         this.setState(theUser);

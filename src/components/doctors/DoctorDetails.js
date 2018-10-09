@@ -16,7 +16,7 @@ componentDidMount(){
 
 getDoc = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/api/doctors/${params.id}`)
+    axios.get(process.env.BASE_URL+`/doctors/${params.id}`)
     .then(response =>{
         const theDoc = response.data;
         this.setState(theDoc);
@@ -29,7 +29,7 @@ getDoc = () => {
 
 deleteDoc = () => {
   const { params } = this.props.match;
-  axios.delete(`http://localhost:5000/api/doctors/delete/${params.id}`)
+  axios.delete(process.env.BASE_URL+`/doctors/delete/${params.id}`)
   .then( response =>{
       this.props.history.push('/doctors'); 
   })

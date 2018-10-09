@@ -13,7 +13,7 @@ class EditDoctor extends Component {
     const specialties = this.state.specialties;
     const docDetails = this.state.docDetails;
 
-    axios.put(`http://localhost:5000/api/doctors/edit/${this.state._id}`, {docName, specialties, docDetails},{withCredentials: true})
+    axios.put(process.env.BASE_URL+`/doctors/edit/${this.state._id}`, {docName, specialties, docDetails},{withCredentials: true})
     .then( (response) => {
         this.getDoc();
         // after submitting the form, redirect to '/doctors'
@@ -24,7 +24,7 @@ class EditDoctor extends Component {
 
 getDoc = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/api/doctors/edit/${params.id}`)
+    axios.get(process.env.BASE_URL+`/doctors/edit/${params.id}`)
     .then(response =>{
         const theDoc = response.data;
         this.setState(theDoc);

@@ -10,7 +10,7 @@ class DoctorList extends Component {
   }
 
   getAllDoctors= () =>{
-    axios.get(`http://localhost:5000/api/doctors`)
+    axios.get(process.env.BASE_URL+`/doctors`)
     .then(response => {
       this.setState({
         listOfDocs: response.data.listOfDocs
