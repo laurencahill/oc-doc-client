@@ -9,6 +9,7 @@ import Signup from './components/users/Signup';
 import Login from './components/users/Login';
 import UserAccount from './components/users/UserAccount';
 import AuthService from './components/auth/auth-service';
+import EditUser from './components/users/EditUser';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -56,6 +57,7 @@ class App extends Component {
               <Route exact path="/doctors/edit/:id" component={EditDoctor}/>
             <Route exact path="/login" render={() => <Login {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
             <Route exact path='/signup' render={() => <Signup {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
+            <Route exact path="/edit" component={EditUser}/>
             <Route exact path="/account" component={UserAccount}/>
 
           </Switch>

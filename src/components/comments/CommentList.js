@@ -8,7 +8,6 @@ class CommentList extends Component {
   }
 
   showComments = () => {
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     if(this.props.theDoc.docComments) {
       return (
         this.props.theDoc.docComments.map((comment, index) => {
@@ -21,7 +20,6 @@ class CommentList extends Component {
             </div>
             <div className="comment">
               <p className="label-full">Upload Date:</p> <p> {comment.uploadDate}</p>
-              {/* <p> {typeof(comment.uploadDate)} </p> */}
             </div>
             </div>
             <div className="comment-details">
