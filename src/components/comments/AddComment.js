@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Comment.css';
@@ -16,7 +15,7 @@ class AddComment extends Component {
     const rating = this.state.rating;
     const visitReason = this.state.visitReason;
     const comment = this.state.comment;
-    axios.post(process.env.BASE_URL+`/doctors/${this.props.theDoc._id}`, { visitDate, rating, visitReason, comment }, {withCredentials: true})
+    axios.post(process.env.REACT_APP_BASE_URL+`/doctors/${this.props.theDoc._id}`, { visitDate, rating, visitReason, comment }, {withCredentials: true})
     .then( (response) => {
         console.log("-------------", response )
         this.props.getData();

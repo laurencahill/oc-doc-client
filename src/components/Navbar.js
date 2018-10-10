@@ -40,7 +40,7 @@ class Navbar extends Component {
             <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Add your ocularist</NavLink>
             </li>
             <li>
-            <NavLink to="/account/:id" activeStyle={{fontWeight: 'bold', color: 'blue'}}>View account</NavLink>
+            <NavLink to={`/account/${this.state.loggedInUser._id}`} activeStyle={{fontWeight: 'bold', color: 'blue'}}>View account</NavLink>
             </li>
             <li>
             <NavLink to="/logout" activeStyle={{fontWeight: 'bold', color: 'blue'}} onClick={()=>this.logout()}>Logout</NavLink>
@@ -63,9 +63,6 @@ class Navbar extends Component {
             </li>
             <li>
             <NavLink to="/doctors/create" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Add your ocularist</NavLink>
-            </li>
-            <li>
-            <NavLink to="/account" activeStyle={{fontWeight: 'bold', color: 'blue'}}>View account</NavLink>
             </li>
             <li>
             <NavLink to="/signup" activeStyle={{fontWeight: 'bold', color: 'blue'}}>Signup</NavLink>

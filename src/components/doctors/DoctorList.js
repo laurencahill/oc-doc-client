@@ -10,7 +10,8 @@ class DoctorList extends Component {
   }
 
   getAllDoctors= () =>{
-    axios.get(process.env.BASE_URL+`/doctors`)
+    console.log("12345678909876543212345678901234567890123456789", process.env.REACT_APP_BASE_URL+"/doctors")
+    axios.get(process.env.REACT_APP_BASE_URL+"/doctors")
     .then(response => {
       this.setState({
         listOfDocs: response.data.listOfDocs

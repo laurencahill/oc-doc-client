@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../auth/auth-service';
-import {Link} from 'react-router-dom' 
+import {Link} from 'react-router-dom'
+import './User.css';
 
 class Signup extends Component {
   constructor(props){
@@ -30,7 +31,7 @@ class Signup extends Component {
             userLocation: ""
         });
         this.props.setTheUserInTheAppComponent(theUserObject)
-        this.props.history.push('/doctors'); 
+        this.props.history.push('/login'); 
       })
        .catch( error => console.log(error) )
       }
@@ -58,7 +59,7 @@ class Signup extends Component {
           <input type="text" name="lastName" className="apply-input" value={this.state.lastName} placeholder="Doe" onChange={ e => this.handleChange(e)}/>
           <label className="label-full">Location:</label>
           <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} placeholder="city, state, country" onChange={ e => this.handleChange(e)} />
-          <input type="submit" value="Signup" />
+          <input type="submit" className="btn" value="Signup" />
         </div>
         </form>
         <p>Already have account? 

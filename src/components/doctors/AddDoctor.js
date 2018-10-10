@@ -14,7 +14,7 @@ class AddDoctor extends Component {
     const docName = this.state.docName;
     const specialties = this.state.specialties;
     const docDetails = this.state.docDetails;
-    axios.post(process.env.BASE_URL+"/doctors/create", {docName, specialties, docDetails})
+    axios.post(process.env.REACT_APP_BASE_URL+"/doctors/create", {docName, specialties, docDetails})
     .then( () => {
         this.props.getData();
         this.setState({ docName: "", specialties:[], docDetails:""});

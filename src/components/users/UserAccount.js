@@ -9,10 +9,11 @@ class UserAccount extends Component {
   }
 
   getAccountDetails= () =>{
-    axios.get(process.env.BASE_URL+`/account/${this.state._id}`, {withCredentials: true})
+    const { params } = this.props.match;
+    axios.get(process.env.REACT_APP_BASE_URL+`/account/${params.id}`, {withCredentials: true})
     .then(response => {
       this.setState({
-        userImage: response.data.theUser.userImage,
+        // userImage: response.data.theUser.userImage,
         username: response.data.theUser.username,
         emailAddress: response.data.theUser.emailAddress,
         firstName: response.data.theUser.firstName,
@@ -27,11 +28,9 @@ class UserAccount extends Component {
 
   deleteUser = () => {
     const { params } = this.props.match;
-    console.log(">>>>>>>>>>>>>>calling delete function")
-    axios.delete(process.env.BASE_URL+`/delete/${params.id}`)
+    axios.delete(process.env.REACT_APP_BASE_URL+`/delete/${params.id}`)
     .then( response =>{
-      console.log("/////////////the response from delete", response)
-        this.props.history.push('/signup');
+        this.props.history.push('/logout');
     })
     .catch((err)=>{
         console.log(err)
@@ -43,21 +42,34 @@ class UserAccount extends Component {
   }
 
   render(){
+    const { params } = this.props.match;
     return(
       <div className="page-info">
       <div className="container-info">
         <div className="login-column">
         <div className="img">
-        <img src={this.state.userImage} alt="userImage"/>
+        {/* <img src={this.state.userImage} alt="userImage"/> */}
         </div>
-          <label className="label-full">Username:</label>{this.state.username}
-          <label className="label-full">Email Address:</label>{this.state.emailAddress}
-          <label className="label-full">First Name:</label>{this.state.firstName}
-           <label className="label-full">Last Name:</label>{this.state.lastName}
-          <label className="label-full">Location:</label>{this.state.userLocation}
+          <div className="form-container">
+          <label className="label-full">Username:</label>
+          <div className="apply-input">{this.state.username}</div>
+
+
+          <label className="label-full">Email:</label>
+          <div className="apply-input">{this.state.emailAddress}</div>
+
+          <label className="label-full">First Name:</label>
+          <div className="apply-input">{this.state.firstName}</div>
+
+          <label className="label-full">Last Name:</label>
+          <div className="apply-input">{this.state.lastName}</div>
+
+          <label className="label-full">Location:</label>
+          <div className="apply-input">{this.state.userLocation}</div>
+          <Link to={`/edit/${params.id}`} className="btn">Edit Account</Link>
+          <p onClick={() => this.deleteUser()}>Delete Account</p>
+          </div>
         </div>
-          <button onClick={() => this.deleteUser()}>Delete Account</button>
-          <Link to={`/edit`}>Edit Account</Link>
       </div>
       </div>
 
