@@ -16,7 +16,7 @@ class CommentList extends Component {
             <div className="form-container">
             <div className="comment-details">
             <div className="comment">
-              <p className="label-full">Author:</p> <p>{comment.author}</p>
+              <p className="label-full">Author:</p> <p>{comment.author.firstName}</p>
             </div>
             <div className="comment">
               <p className="label-full">Upload Date:</p> <p> {comment.uploadDate}</p>

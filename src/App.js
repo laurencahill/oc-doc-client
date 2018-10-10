@@ -58,7 +58,7 @@ class App extends Component {
               <Route exact path="/doctors/edit/:id" component={EditDoctor}/>
             <Route exact path="/login" render={() => <Login {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
             <Route exact path='/signup' render={() => <Signup {...this.props} setTheUserInTheAppComponent={this.logMeIn}/>}/>
-            <Route exact path="/edit/:id" component={EditUser}/>
+            <Route exact path="/edit/:id" render={() => <EditUser  {...this.props} userInSession={this.state.loggedInUser}    />}   />
             <Route exact path="/account/:id" component={UserAccount}/>
 
           </Switch>

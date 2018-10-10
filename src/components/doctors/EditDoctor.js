@@ -16,7 +16,6 @@ class EditDoctor extends Component {
     axios.put(process.env.REACT_APP_BASE_URL+`/doctors/edit/${this.state._id}`, {docName, specialties, docDetails},{withCredentials: true})
     .then( (response) => {
         this.getDoc();
-        // after submitting the form, redirect to '/doctors'
         this.props.history.push('/doctors');   
     })
     .catch( error => console.log(error) )

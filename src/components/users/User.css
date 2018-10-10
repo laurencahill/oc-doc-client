@@ -98,3 +98,16 @@
     border-radius: 10px;
     text-transform: uppercase;
   }
+
+.img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    background-image: url("/images/avatar.png");
+    background-size: contain;
+    overflow: hidden;
+    }

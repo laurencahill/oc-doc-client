@@ -3,34 +3,44 @@ import axios from 'axios';
 import './User.css';
 
 class EditUser extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {};
   }
 
+  componentDidMount(){
+    this.setState(this.props.userInSession)
+  }
+
+
+  componentWillReceiveProps(nextprops){
+    this.setState(nextprops.userInSession)
+  }
+
+
   handleFormSubmit = (event) => {
     event.preventDefault();
-    // const userImage = this.state.userImage;
+    const userImage = this.state.userImage;
     const username = this.state.username;
     const emailAddress = this.state.emailAddress;
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
     const userLocation = this.state.userLocation;
 
-    // let formData= new FormData();
+    let formData= new FormData();
 
-    // formData.append('userImage', userImage);
-    // formData.append('username', username);
-    // formData.append('emailAddress', emailAddress);
-    // formData.append('firstName', firstName);
-    // formData.append('lastName', lastName);
-    // formData.append('userLocation', userLocation);
+    formData.append('userImage', userImage);
+    formData.append('username', username);
+    formData.append('emailAddress', emailAddress);
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('userLocation', userLocation);
 
 
     console.log("~~~~~~~~~~~~updating user info")
 
     const { params } = this.props.match;
-    axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`, {username, emailAddress, firstName, lastName, userLocation},{withCredentials: true})
+    axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`, formData, {withCredentials: true})
 
     .then( (response) => {
       console.log("```````````````response from update", response)
@@ -40,33 +50,31 @@ class EditUser extends Component {
     .catch( error => console.log(error) )
   }
 
-getUser = () => {
-    const { params } = this.props.match;
-    axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`)
-    .then(response =>{
-        const theUser = response.data;
-        this.setState(theUser);
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
-}
-  // handleChangeUserImage = (e) => {  
-  //   this.setState({
-  //     userImage:e.target.value
-  //   })
-  // }
-
-//   handleChangeUserImage = (e) => {  
-    
-//     switch (e.target.name) {
-//       case 'userImage':
-//       this.setState({ userImage:e.target.files[0] })
-//       break;
-//       default:
-//       this.setState({ [e.target.name]: e.target.value })
-//   }
+// getUser = () => {
+//     const { params } = this.props.match;
+//     axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`)
+//     .then(response =>{
+//         const theUser = response.data;
+//         this.setState(theUser);
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
 // }
+
+
+  handleChangeUserImage = (e) => {  
+
+  console.log(">>>>>>>>>>>>>>>>>>>>>", e.target.files[0])
+    
+    switch (e.target.name) {
+      case 'userImage':
+      this.setState({ userImage:e.target.files[0] })
+      break;
+      default:
+      this.setState({ [e.target.name]: e.target.value })
+  }
+}
 
   handleChangeUsername = (e) => {  
     this.setState({
@@ -98,18 +106,18 @@ getUser = () => {
     })
   }
 
-  componentDidMount(){
-    this.getUser();
-  }
+ 
 
   render(){
+    if(this.state.username){
+
     return (
       <div className="page-info">
       <div className="container-info">
       <div className="login-column">
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
-          {/* <label>User Image:</label>
-          <input type="file" name="userImage" value={this.state.userImage} onChange={e => this.handleChangeUserImage(e)} /> */}
+      {/* <div className="img-container"></div> */}
+          <input type="file" name="userImage" onChange={e => this.handleChangeUserImage(e)} />
           <label className="label-full">Username:</label>
           <input type="text" name="username" className="apply-input" value={this.state.username} onChange={e => this.handleChangeUsername(e)}/>
           <label className="label-full">Email:</label>
@@ -126,6 +134,9 @@ getUser = () => {
       </div>
       </div>
     )
+  }else{
+    return null
+  }
   }
 }
 

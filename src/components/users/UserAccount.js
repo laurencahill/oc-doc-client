@@ -13,7 +13,7 @@ class UserAccount extends Component {
     axios.get(process.env.REACT_APP_BASE_URL+`/account/${params.id}`, {withCredentials: true})
     .then(response => {
       this.setState({
-        // userImage: response.data.theUser.userImage,
+        userImage: response.data.theUser.userImage,
         username: response.data.theUser.username,
         emailAddress: response.data.theUser.emailAddress,
         firstName: response.data.theUser.firstName,
@@ -46,10 +46,10 @@ class UserAccount extends Component {
     return(
       <div className="page-info">
       <div className="container-info">
-        <div className="login-column">
-        <div className="img">
-        {/* <img src={this.state.userImage} alt="userImage"/> */}
+        <div className="img-container">
+        <img src={this.state.userImage} alt=""/>
         </div>
+        <div className="login-column">
           <div className="form-container">
           <label className="label-full">Username:</label>
           <div className="apply-input">{this.state.username}</div>
