@@ -34,8 +34,10 @@ class AddComment extends Component {
       <div>
         <div className="comment-container">
         <form onSubmit={this.handleFormSubmit} className="form-container">
-        <h2>LEAVE A COMMENT:</h2>
         <div className="comment-row">
+        <div>
+          <p>Submit your comment:</p>
+        </div>
           <label className="label-full">Visit Date:</label>
           <input type="date" name="visitDate" className= "comment-input" value={this.state.visitDate} onChange={ e => this.handleChange(e)}/>
         </div>

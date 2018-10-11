@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SearchBar from '../searchbar/SearchBar.js';
 import './Doctor.css';
 
 class DoctorList extends Component {
@@ -14,12 +15,24 @@ class DoctorList extends Component {
     axios.get(process.env.REACT_APP_BASE_URL+"/doctors")
     .then(response => {
       this.setState({
-        listOfDocs: response.data.listOfDocs
+        listOfDocs: response.data.listOfDocs,
+        filteredList: response.data.listOfDocs
       })
     })
     .catch((err)=>{
         console.log(err);
     })
+  }
+
+  searchFunction = (searchTerm)=>{
+    let theList = [...this.state.listOfDocs];
+    theList = theList.filter((eachDoc)=>{
+      return eachDoc.docName.toUpperCase().includes(searchTerm.toUpperCase()) || 
+      eachDoc.docCity.toUpperCase().includes(searchTerm.toUpperCase()) ||
+      eachDoc.docState.toUpperCase().includes(searchTerm.toUpperCase())
+    })
+
+    this.setState({filteredList: theList});
   }
 
   componentDidMount() {
@@ -29,10 +42,16 @@ class DoctorList extends Component {
   render(){
     return(
       <div>
-      <div className="doc-slider"></div>
+
+      <div className="doc-slider">
+      <div className="searchbar">
+      <SearchBar handleSearch={this.searchFunction} />
+      </div>
+      </div>
+
       <div className="page-doc-info">
 
-          { this.state.listOfDocs.map((doctor, index) => {
+          {this.state.filteredList && this.state.filteredList.map((doctor, index) => {
             return (
               <div className="container-doc-info">
               <div className="form-doc-container">
@@ -42,7 +61,7 @@ class DoctorList extends Component {
               <div className="img-doc-container">
               <img src={doctor.docImage} className="doc-img" alt="docImage"/>
               </div>
-              <div className="btn-doc"><Link to={`/doctors/${doctor._id}`}>View Details</Link></div>
+              <Link to={`/doctors/${doctor._id}`}><div className="btn-doc">View Details</div></Link>
               </div>
               <div className="doc-right-col">
 
@@ -60,15 +79,15 @@ class DoctorList extends Component {
                 <div className="input-doc-sm">{doctor.specialties}</div>
                 </div>
                 </div>
-                <p className="label-doc-full">Details:</p>
+                <div className="label-doc-full">Details:</div>
                 <div className="input-doc">{doctor.docDetails}</div>
                 <div className="doc-row">
                 <div className="doc-right-col">
-                <p className="label-doc-full">City:</p>
+                <div className="label-doc-full">City:</div>
                 <div className="input-doc-sm">{doctor.docCity}</div>
                 </div>
                 <div className="doc-right-col">
-                <p className="label-doc-full">State:</p>
+                <div className="label-doc-full">State:</div>
                 <div className="input-doc-sm">{doctor.docState}</div>
                 </div>
                 </div>

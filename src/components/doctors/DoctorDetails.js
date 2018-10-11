@@ -43,21 +43,68 @@ render(){
   // console.log(rating.toFixed(1))
   return(
     <div>
-      <h1>{this.state.docName}</h1>
-      <p>Rating: {this.state.avgRating.toFixed(1)}</p>
-      <p>Specialties: {this.state.specialties}</p>
-      <p>Details: {this.state.docDetails}</p>
-      <p>City: {this.state.docCity}</p>
-      <p>State: {this.state.docState}</p>
-      <button onClick={() => this.deleteDoc()}>Delete Doctor</button>
-      <Link to={`/doctors/edit/${this.state._id}`}>Edit Doctor</Link>
-    <div>
-    <AddComment theDoc= {this.state} />
+    <div className="doc-slider-2">
+      
+      <div className="page-doc-info">
+
+      <div className="container-doc-info-2">
+
+      <div className="doc-info">
+      <div className="doc-col">
+      <h2>{this.state.docName}</h2>
+      <div className="img-doc-container-2">
+      <img src={this.state.docImage} className="doc-img" alt="docImage"/>
+      </div>
+      </div>
+
+      <div className="doc-right-col">
+
+      <div className="doc-row">
+      <div className="doc-right-col">
+      <div className="label-doc-full">Average Rating:</div>
+      <div className="input-doc-sm">{this.state.avgRating.toFixed(1)}</div>
+      </div>
+      <div className="doc-right-col">
+      <div className="label-doc-full">Specialties: </div>
+      <div className="input-doc-sm">{this.state.specialties}</div>
+      </div>
+      </div>
+
+      <div className="label-doc-full">Details:</div>
+      <div className="input-doc">{this.state.docDetails}</div>
+                <div className="doc-row">
+                <div className="doc-right-col">
+                <div className="label-doc-full">City:</div>
+                <div className="input-doc-sm">{this.state.docCity}</div>
+                </div>
+                <div className="doc-right-col">
+                <div className="label-doc-full">State:</div>
+                <div className="input-doc-sm">{this.state.docState}</div>
+               </div>
+              </div>
+      <div>
+      <div className="doc-row">
+      <div className="btn-doc-2" onClick={() => this.deleteDoc()}>Delete Doctor</div>
+      <Link to={`/doctors/edit/${this.state._id}`}><div className="btn-doc-2">Edit Doctor</div></Link>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <div>
+      <AddComment theDoc= {this.state} />
+      </div>
+
     </div>
     <div>
+   </div>
+   </div>
+   
     <CommentList theDoc= {this.state}/>
+    
     </div>
-    </div>
+    
   )
 }
 }

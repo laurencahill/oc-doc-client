@@ -13,7 +13,9 @@ class CommentList extends Component {
         this.props.theDoc.docComments.map((comment, index) => {
           return (
             <div key={comment._id}  className="comment-info">
+
             <div className="form-container">
+            <img src={comment.author.userImage} alt=""/>
             <div className="comment-details">
             <div className="comment">
               <p className="label-full">Author:</p> <p>{comment.author.firstName}</p>
