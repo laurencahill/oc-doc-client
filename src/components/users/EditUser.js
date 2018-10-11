@@ -50,19 +50,6 @@ class EditUser extends Component {
     .catch( error => console.log(error) )
   }
 
-// getUser = () => {
-//     const { params } = this.props.match;
-//     axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`)
-//     .then(response =>{
-//         const theUser = response.data;
-//         this.setState(theUser);
-//     })
-//     .catch((err)=>{
-//         console.log(err)
-//     })
-// }
-
-
   handleChangeUserImage = (e) => {  
 
   console.log(">>>>>>>>>>>>>>>>>>>>>", e.target.files[0])

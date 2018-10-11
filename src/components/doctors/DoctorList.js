@@ -10,7 +10,6 @@ class DoctorList extends Component {
   }
 
   getAllDoctors= () =>{
-    console.log("12345678909876543212345678901234567890123456789", process.env.REACT_APP_BASE_URL+"/doctors")
     axios.get(process.env.REACT_APP_BASE_URL+"/doctors")
     .then(response => {
       this.setState({
@@ -28,18 +27,23 @@ class DoctorList extends Component {
 
   render(){
     return(
-      <div>
-        <div>
+      <div className="page-info">
+      <div className="container-info">
           { this.state.listOfDocs.map((doctor, index) => {
             return (
               <div key={doctor._id}>
-              <img src="{doctor.docImage}" alt="docImage"/>
+              <div className="img-container">
+              <img src={doctor.docImage} alt="docImage"/>
+              </div>
                 <Link to={`/doctors/${doctor._id}`}>
                   <h3>{doctor.docName}</h3>
                 </Link>
-                <p>Average Rating: {doctor.avgRating}</p>
-                <p>Specialties: {doctor.specialties}</p>
-                <p>Details: {doctor.docDetails} </p>
+                <p className="label-full">Average Rating:</p>
+                <div className="apply-input">{doctor.avgRating}</div>
+                <p className="label-full">Specialties:</p>
+                <div className="apply-input">{doctor.specialties}</div>
+                <p className="label-full">Details:</p>
+                <div className="apply-input">{doctor.docDetails}</div>
               </div>
             )})
           }
