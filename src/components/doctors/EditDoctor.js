@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../users/User.css';
 
 class EditDoctor extends Component {
   constructor(props){
     super(props);
     this.state = {};
-  }
-
-  componentDidMount(){
-    this.setState(this.props.userInSession)
-  }
-
-  componentWillReceiveProps(nextprops){
-    this.setState(nextprops.userInSession)
   }
 
   handleFormSubmit = (event) => {
@@ -21,6 +14,8 @@ class EditDoctor extends Component {
     const docName = this.state.docName;
     const specialties = this.state.specialties;
     const docDetails = this.state.docDetails;
+    const docCity =     this.state.docCity;
+    const docState =    this.state.docState
 
     let formData = new FormData();
 
@@ -28,26 +23,29 @@ class EditDoctor extends Component {
     formData.append('docName', docName);
     formData.append('specialties', specialties);
     formData.append('docDetails', docDetails);
+    formData.append('docCity', docCity);
+    formData.append('docState', docState);
 
-    axios.put(process.env.REACT_APP_BASE_URL+`/doctors/edit/${this.state._id}`, formData ,{withCredentials: true})
+    const { params } = this.props.match;
+    axios.put(process.env.REACT_APP_BASE_URL+`/doctors/edit/${params.id}`, formData ,{withCredentials: true})
     .then( (response) => {
-        this.getDoc();
+       this.getDoc();
         this.props.history.push('/doctors');   
     })
     .catch( error => console.log(error) )
   }
 
-// getDoc = () => {
-//     const { params } = this.props.match;
-//     axios.get(process.env.REACT_APP_BASE_URL+`/doctors/edit/${params.id}`)
-//     .then(response =>{
-//         const theDoc = response.data;
-//         this.setState(theDoc);
-//     })
-//     .catch((err)=>{
-//         console.log(err)
-//     })
-// }
+getDoc = () => {
+    const { params } = this.props.match;
+    axios.get(process.env.REACT_APP_BASE_URL+`/doctors/edit/${params.id}`)
+    .then(response =>{
+        const theDoc = response.data;
+        this.setState(theDoc);
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
 
   handleChangeDocImage = (e) => {        
     switch (e.target.name) {
@@ -77,23 +75,39 @@ class EditDoctor extends Component {
     })
   }
 
-  // componentDidMount(){
-  //   this.getDoc();
-  // }
+  handleChangeDocCity = (e) => {  
+    this.setState({
+      docCity:e.target.value
+    });
+  }
 
-  render(){
-    return (
+  handleChangeDocState = (e) => {  
+    this.setState({
+      docState:e.target.value
+    });
+  }
+
+  componentDidMount(){
+    this.getDoc();
+  }
+
+render(){
+ return (
       <div className="page-info">
       <div className="container-info">
       <div className="login-column">
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
+          <input type="file" name="docImage" onChange={e => this.handleChangeDocImage(e)} />
           <label className="label-full">Name:</label>
-          <input type="text" name="docName" className="apply-input"  value={this.state.docName} onChange={e => this.handleChangeDocName(e)}/>
+          <input type="text" name="docName" className="apply-input" value={this.state.docName} onChange={e => this.handleChangeDocName(e)}/>
           <label className="label-full">Specialties:</label>
-          <input type="text" name="specialties" className="apply-input"  value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
+          <input type="text" name="specialties" className="apply-input" value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
           <label className="label-full" >Details:</label>
-          <textarea name="details" className="apply-input"  value={this.state.docDetails} onChange={e => this.handleChangeDocDetails(e)} />
-          
+          <input type="text" name="details" className="apply-input" value={this.state.docDetails} onChange={e => this.handleChangeDocDetails(e)} />
+          <label className="label-full">City:</label>
+          <input type="text" name="docCity" className="apply-input" value={this.state.docCity} onChange={ e => this.handleChangeDocCity(e)}/>
+          <label className="label-full">State:</label>
+          <input type="text" name="docState" className="apply-input" value={this.state.docState} onChange={ e => this.handleChangeDocState(e)}/>
           <input type="submit" value="Save Changes" className="btn" />
         </form>
       </div> 

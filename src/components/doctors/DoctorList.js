@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Doctor.css';
 
 class DoctorList extends Component {
   constructor(){
@@ -27,28 +28,63 @@ class DoctorList extends Component {
 
   render(){
     return(
-      <div className="page-info">
-      <div className="container-info">
+      <div>
+      <div className="doc-slider"></div>
+      <div className="page-doc-info">
+
           { this.state.listOfDocs.map((doctor, index) => {
             return (
+              <div className="container-doc-info">
+              <div className="form-doc-container">
               <div key={doctor._id}>
-              <div className="img-container">
-              <img src={doctor.docImage} alt="docImage"/>
+              <div className="doc-info">
+              <div className="doc-col">
+              <div className="img-doc-container">
+              <img src={doctor.docImage} className="doc-img" alt="docImage"/>
               </div>
+              <div className="btn-doc"><Link to={`/doctors/${doctor._id}`}>View Details</Link></div>
+              </div>
+              <div className="doc-right-col">
+
                 <Link to={`/doctors/${doctor._id}`}>
                   <h3>{doctor.docName}</h3>
                 </Link>
-                <p className="label-full">Average Rating:</p>
-                <div className="apply-input">{doctor.avgRating}</div>
-                <p className="label-full">Specialties:</p>
-                <div className="apply-input">{doctor.specialties}</div>
-                <p className="label-full">Details:</p>
-                <div className="apply-input">{doctor.docDetails}</div>
+
+                <div className="doc-row">
+                <div className="doc-right-col">
+                <div className="label-doc-full">Average Rating:</div>
+                <div className="input-doc-sm">{doctor.avgRating}</div>
+                </div>
+                <div className="doc-right-col">
+                <div className="label-doc-full">Specialties:</div>
+                <div className="input-doc-sm">{doctor.specialties}</div>
+                </div>
+                </div>
+                <p className="label-doc-full">Details:</p>
+                <div className="input-doc">{doctor.docDetails}</div>
+                <div className="doc-row">
+                <div className="doc-right-col">
+                <p className="label-doc-full">City:</p>
+                <div className="input-doc-sm">{doctor.docCity}</div>
+                </div>
+                <div className="doc-right-col">
+                <p className="label-doc-full">State:</p>
+                <div className="input-doc-sm">{doctor.docState}</div>
+                </div>
+                </div>
               </div>
-            )})
-          }
+
+              <div className="doc-info">  
+                
+                </div>
+              </div>
         </div>
       </div>
+      </div>
+            )})
+          }
+    </div>
+    </div>
     )
   }
 }

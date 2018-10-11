@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './User.css';
+import '../users/User.css';
 
 class EditUser extends Component {
   constructor(props){
@@ -12,11 +12,9 @@ class EditUser extends Component {
     this.setState(this.props.userInSession)
   }
 
-
   componentWillReceiveProps(nextprops){
     this.setState(nextprops.userInSession)
   }
-
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -36,14 +34,10 @@ class EditUser extends Component {
     formData.append('lastName', lastName);
     formData.append('userLocation', userLocation);
 
-
-    console.log("~~~~~~~~~~~~updating user info")
-
     const { params } = this.props.match;
     axios.post(process.env.REACT_APP_BASE_URL+`/edit/${params.id}`, formData, {withCredentials: true})
 
     .then( (response) => {
-      console.log("```````````````response from update", response)
         this.getUser();
         this.props.history.push('/account');   
     })
@@ -51,17 +45,14 @@ class EditUser extends Component {
   }
 
   handleChangeUserImage = (e) => {  
-
-  console.log(">>>>>>>>>>>>>>>>>>>>>", e.target.files[0])
-    
     switch (e.target.name) {
       case 'userImage':
       this.setState({ userImage:e.target.files[0] })
       break;
       default:
       this.setState({ [e.target.name]: e.target.value })
+    }
   }
-}
 
   handleChangeUsername = (e) => {  
     this.setState({
@@ -92,9 +83,6 @@ class EditUser extends Component {
       userLocation:e.target.value
     })
   }
-
- 
-
   render(){
     if(this.state.username){
 
