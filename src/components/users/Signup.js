@@ -6,17 +6,17 @@ import './User.css';
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '', emailAddress: '', firstName: '', lastName: '', userLocation: ''};
+    this.state =   { username: '', password: '', emailAddress: '', firstName: '', lastName: '', userLocation: ''};
     this.service = new AuthService();
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const username =     this.state.username;
+    const password =     this.state.password;
     const emailAddress = this.state.emailAddress;
-    const firstName = this.state.firstName;
-    const lastName = this.state.lastName;
+    const firstName =    this.state.firstName;
+    const lastName =     this.state.lastName;
     const userLocation = this.state.userLocation;
    
   
@@ -43,29 +43,34 @@ class Signup extends Component {
       
   render(){
     return(
-      <div className="page-info">
-      <div className="container-info">
-        <form onSubmit={this.handleFormSubmit} className="form-container">
-        <div className="login-column">
-          <label className="label-full">Username:</label>
-          <input type="text" name="username" className="apply-input" value={this.state.username} placeholder="johndoe" onChange={ e => this.handleChange(e)}/>
-          <label className="label-full">Password:</label>
-          <input name="password" className="apply-input" value={this.state.password} placeholder="*******" onChange={ e => this.handleChange(e)} />
-          <label className="label-full">Email Address:</label>
-          <input type="email" name="emailAddress" className="apply-input" value={this.state.emailAddress} placeholder="john@doe.com" onChange={ e => this.handleChange(e)}/>
-          <label className="label-full">First Name:</label>
-          <input type="text" name="firstName" className="apply-input" value={this.state.firstName} placeholder="John" onChange={ e => this.handleChange(e)} />
-           <label className="label-full">Last Name:</label>
-          <input type="text" name="lastName" className="apply-input" value={this.state.lastName} placeholder="Doe" onChange={ e => this.handleChange(e)}/>
-          <label className="label-full">Location:</label>
-          <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} placeholder="city, state, country" onChange={ e => this.handleChange(e)} />
-          <input type="submit" className="btn" value="Signup" />
+      <div className="user-slider">
+        <div className="page-info">
+          <div className="container-log-info">
+            <form onSubmit={this.handleFormSubmit} className="form-container">
+              <div className="login-column">
+                <div className="img-login">
+                  <img src="../images/ocdoc3.png" className="login-img" alt="" />
+                </div>
+                <label className="label-full">Username:</label>
+                <input type="text" name="username" className="apply-input" value={this.state.username} placeholder="johndoe" onChange={e => this.handleChange(e)} />
+                <label className="label-full">Password:</label>
+                <input name="password" className="apply-input" value={this.state.password} placeholder="*******" onChange={e => this.handleChange(e)} />
+                <label className="label-full">Email Address:</label>
+                <input type="email" name="emailAddress" className="apply-input" value={this.state.emailAddress} placeholder="john@doe.com" onChange={e => this.handleChange(e)} />
+                <label className="label-full">First Name:</label>
+                <input type="text" name="firstName" className="apply-input" value={this.state.firstName} placeholder="John" onChange={e => this.handleChange(e)} />
+                <label className="label-full">Last Name:</label>
+                <input type="text" name="lastName" className="apply-input" value={this.state.lastName} placeholder="Doe" onChange={e => this.handleChange(e)} />
+                <label className="label-full">Location:</label>
+                <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} placeholder="city, state, country" onChange={e => this.handleChange(e)} />
+                <input type="submit" className="btn" value="Signup" />
+              </div>
+            </form>
+            <p>Already have account?
+<Link to={"/login"}> Login</Link>
+            </p>
+          </div>
         </div>
-        </form>
-        <p>Already have account? 
-            <Link to={"/login"}> Login</Link>
-        </p>
-      </div>
       </div>
     )
   }

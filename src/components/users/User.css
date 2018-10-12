@@ -6,7 +6,7 @@
     font-size: 13px;
     background-color: #EFEFEF;
     border-radius: 5px;
-    width: 300px;
+    width: 400px;
 }
 
 .info-input {
@@ -35,7 +35,7 @@
     text-transform: uppercase;
     font-size: 12px;
     text-align: left;
-    color: #7b7a7b;
+    color: #343434;
 }
 
 .form-container {
@@ -75,6 +75,19 @@
     margin: 25px;
 }
 
+.container-log-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px 30px 30px 30px;
+    border-radius: 5px;
+    filter: drop-shadow(0 0 2px #B4B2B4);
+    width: 500px;
+    margin: 25px;
+}
+
 .apply-input {
     display: flex;
     flex-direction: column;
@@ -83,8 +96,9 @@
     font-size: 13px;
     background-color: #EFEFEF;
     border-radius: 5px;
-    width: 320px;
+    width: 400px;
     border-color: none;
+    text-align: left;
 }
 
 .btn {
@@ -110,4 +124,33 @@
     background-image: url("/images/avatar.png");
     background-size: contain;
     overflow: hidden;
-    }
+}
+
+.img-doc-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    background-image: url("/images/Doctor-male.jpg");
+    background-size: contain;
+    overflow: hidden;
+}
+
+.user-slider {
+    background-image: url("/images/user-slider.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-img {
+    width: 400px;
+    margin: 25px 0px 25px 0px;
+}

@@ -10,10 +10,10 @@ class EditDoctor extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const docImage = this.state.docImage;
-    const docName = this.state.docName;
+    const docImage =    this.state.docImage;
+    const docName =     this.state.docName;
     const specialties = this.state.specialties;
-    const docDetails = this.state.docDetails;
+    const docDetails =  this.state.docDetails;
     const docCity =     this.state.docCity;
     const docState =    this.state.docState
 
@@ -93,26 +93,31 @@ getDoc = () => {
 
 render(){
  return (
-      <div className="page-info">
-      <div className="container-info">
-      <div className="login-column">
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
-          <input type="file" name="docImage" onChange={e => this.handleChangeDocImage(e)} />
-          <label className="label-full">Name:</label>
-          <input type="text" name="docName" className="apply-input" value={this.state.docName} onChange={e => this.handleChangeDocName(e)}/>
-          <label className="label-full">Specialties:</label>
-          <input type="text" name="specialties" className="apply-input" value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
-          <label className="label-full" >Details:</label>
-          <input type="text" name="details" className="apply-input" value={this.state.docDetails} onChange={e => this.handleChangeDocDetails(e)} />
-          <label className="label-full">City:</label>
-          <input type="text" name="docCity" className="apply-input" value={this.state.docCity} onChange={ e => this.handleChangeDocCity(e)}/>
-          <label className="label-full">State:</label>
-          <input type="text" name="docState" className="apply-input" value={this.state.docState} onChange={ e => this.handleChangeDocState(e)}/>
-          <input type="submit" value="Save Changes" className="btn" />
-        </form>
-      </div> 
-      </div>
-      </div>    
+   <div>
+     <div className="doc-slider-3">
+       <div className="page-info">
+         <div className="container-log-info">
+           <img src={this.state.docImage} className="img-doc-container" alt="" />
+           <div className="login-column">
+             <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
+               <input type="file" name="docImage" onChange={e => this.handleChangeDocImage(e)} />
+               <label className="label-full">Name:</label>
+               <input type="text" name="docName" className="apply-input" value={this.state.docName} onChange={e => this.handleChangeDocName(e)} />
+               <label className="label-full">Specialties:</label>
+               <input type="text" name="specialties" className="apply-input" value={this.state.specialties} onChange={e => this.handleChangeSpecialties(e)} />
+               <label className="label-full" >Details:</label>
+               <input type="text" name="details" className="apply-input" value={this.state.docDetails} onChange={e => this.handleChangeDocDetails(e)} />
+               <label className="label-full">City:</label>
+               <input type="text" name="docCity" className="apply-input" value={this.state.docCity} onChange={e => this.handleChangeDocCity(e)} />
+               <label className="label-full">State:</label>
+               <input type="text" name="docState" className="apply-input" value={this.state.docState} onChange={e => this.handleChangeDocState(e)} />
+               <input type="submit" value="Save Changes" className="btn" />
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>  
     )
   }
 }

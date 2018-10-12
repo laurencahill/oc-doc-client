@@ -17,9 +17,9 @@ class AddComment extends Component {
     const comment = this.state.comment;
     axios.post(process.env.REACT_APP_BASE_URL+`/doctors/${this.props.theDoc._id}`, { visitDate, rating, visitReason, comment }, {withCredentials: true})
     .then( (response) => {
-        console.log("-------------", response )
-        this.props.getData();
         this.setState({ visitDate:"", rating:"", visitReason:"", comment:"" });
+        this.props.history.push(`/doctors/${this.props.theDoc._id}`)
+
     })
     .catch( error => console.log(error) )
   }
@@ -33,32 +33,31 @@ class AddComment extends Component {
     return(
       <div>
         <div className="comment-container">
-        <form onSubmit={this.handleFormSubmit} className="form-container">
-        <div className="comment-row">
-        <div>
-          <p>Submit your comment:</p>
+          <form onSubmit={this.handleFormSubmit} className="form-container">
+            <div className="comment-row">
+              <div>
+                <h2 className="search-h3">Leave a review:</h2>
+              </div>
+              <label className="label-full-com">Visit Date:</label>
+              <input type="date" name="visitDate" className="comment-input" value={this.state.visitDate} onChange={e => this.handleChange(e)} />
+            </div>
+            <div className="comment-row">
+              <label className="label-full-com">Rating:</label>
+              <input type="number" name="rating" className="comment-input" placeholder="rate this doctor 0-5" value={this.state.rating} onChange={e => this.handleChange(e)} />
+            </div>
+            <div className="comment-row">
+              <label className="label-full-com">Reason for Visit:</label>
+              <input type="text" name="visitReason" className="comment-input" placeholder="why did you see this doctor?" value={this.state.visitReason} onChange={e => this.handleChange(e)} />
+            </div>
+            <div className="comment-row">
+              <label className="label-full-com">Comment:</label>
+              <input type="text" name="comment" className="comment-input" placeholder="how did your appointment go?" value={this.state.comment} onChange={e => this.handleChange(e)} />
+            </div>
+            <div className="comment-row">
+              <input type="submit" value="Submit Review" className="btn-com" />
+            </div>
+          </form>
         </div>
-          <label className="label-full">Visit Date:</label>
-          <input type="date" name="visitDate" className= "comment-input" value={this.state.visitDate} onChange={ e => this.handleChange(e)}/>
-        </div>
-        <div className="comment-row">
-          <label className="label-full">Rating:</label>
-          <input type="number" name="rating" className= "comment-input" value={this.state.rating} onChange={ e => this.handleChange(e)}/>
-        </div>
-        <div className="comment-row">
-          <label className="label-full">Reason for Visit:</label>
-          <input type="text" name="visitReason" className= "comment-input" value={this.state.visitReason} onChange={ e => this.handleChange(e)}/>
-        </div>
-        <div className="comment-row">
-          <label className="label-full">Comment:</label>
-          <input type="text" name="comment" className= "comment-input" value={this.state.comment} onChange={ e => this.handleChange(e)}/>
-        </div>
-        <div className="comment-row">
-          <input type="submit" value="Submit Comment" className= "comment-input"/>
-        </div>
-        </form>
-        </div>
-
       </div>
     )
   }

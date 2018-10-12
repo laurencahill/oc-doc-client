@@ -34,23 +34,24 @@ class Login extends Component {
        
   render(){
     return(
-      <div className="page-info">
-      <div className="container-info">
-        <form onSubmit={this.handleFormSubmit} className="form-container">
-        <div className="login-column">
-          <div className="login-row">
-          <label className="label-full">Username:</label>
-          <input type="text" name="username" className="login-input" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+      <div className="user-slider">
+        <div className="page-info">
+          <div className="container-log-info">
+            <form onSubmit={this.handleFormSubmit} className="form-container">
+              <div className="login-column">
+                <div className="img-login">
+                  <img src="../images/ocdoc3.png" className="login-img" alt="" />
+                </div>
+                <label className="label-full">Username:</label>
+                <input type="text" name="username" className="login-input" value={this.state.username} onChange={e => this.handleChange(e)} />
+                <label className="label-full">Password:</label>
+                <input name="password" className="login-input" value={this.state.password} onChange={e => this.handleChange(e)} />
+              </div>
+              <input type="submit" className="btn" value="Login" />
+            </form>
+            <p>Don't have an account? <Link to={"/signup"}> Signup</Link></p>
           </div>
-          <div className="login-row">
-          <label className="label-full">Password:</label>
-          <input name="password" className="login-input" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          </div>
-          <input type="submit" className="btn" value="Login" />
         </div>
-        </form>
-        <p>Don't have an account? <Link to={"/signup"}> Signup</Link></p>
-      </div>
       </div>
     )
   }

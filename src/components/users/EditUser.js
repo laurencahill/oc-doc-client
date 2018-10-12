@@ -87,26 +87,30 @@ class EditUser extends Component {
     if(this.state.username){
 
     return (
-      <div className="page-info">
-      <div className="container-info">
-      <div className="login-column">
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
-      {/* <div className="img-container"></div> */}
-          <input type="file" name="userImage" onChange={e => this.handleChangeUserImage(e)} />
-          <label className="label-full">Username:</label>
-          <input type="text" name="username" className="apply-input" value={this.state.username} onChange={e => this.handleChangeUsername(e)}/>
-          <label className="label-full">Email:</label>
-          <input type="text" name="emailAddress" className="apply-input" value={this.state.emailAddress} onChange={e => this.handleChangeEmailAddress(e)} />
-          <label className="label-full">First Name:</label>
-          <input type="text" name="firstName" className="apply-input" value={this.state.firstName} onChange={e => this.handleChangeFirstName(e)} />
-          <label className="label-full">Last Name:</label>
-          <input type="text" name="lastName" className="apply-input" value={this.state.lastName} onChange={e => this.handleChangeLastName(e)} />
-          <label className="label-full">Location:</label>
-          <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} onChange={e => this.handleChangeUserLocation(e)} />
-          <input type="submit" value="Save Changes" className="btn" />
-        </form>
-      </div>
-      </div>
+      <div className="user-slider">
+        <div className="page-info">
+          <div className="container-log-info">
+            <div className="img-container">
+              <img src={this.state.userImage} alt="" />
+            </div>
+            <div className="login-column">
+              <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">
+                <input type="file" name="userImage" onChange={e => this.handleChangeUserImage(e)} />
+                <label className="label-full">Username:</label>
+                <input type="text" name="username" className="apply-input" value={this.state.username} onChange={e => this.handleChangeUsername(e)} />
+                <label className="label-full">Email:</label>
+                <input type="text" name="emailAddress" className="apply-input" value={this.state.emailAddress} onChange={e => this.handleChangeEmailAddress(e)} />
+                <label className="label-full">First Name:</label>
+                <input type="text" name="firstName" className="apply-input" value={this.state.firstName} onChange={e => this.handleChangeFirstName(e)} />
+                <label className="label-full">Last Name:</label>
+                <input type="text" name="lastName" className="apply-input" value={this.state.lastName} onChange={e => this.handleChangeLastName(e)} />
+                <label className="label-full">Location:</label>
+                <input type="text" name="userLocation" className="apply-input" value={this.state.userLocation} onChange={e => this.handleChangeUserLocation(e)} />
+                <input type="submit" value="Save Changes" className="btn" />
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }else{

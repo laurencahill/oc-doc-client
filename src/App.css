@@ -49,3 +49,57 @@
 .logo {
   width: 150px;
 }
+
+.home-slider {
+  background-image: url("/images/doc-slider.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-img {
+  width: 600px;
+}
+
+.home-h1 {
+  font-size: 55px;
+  margin: 5px;
+  filter: drop-shadow(0 0 10px #000000c2);
+  color: white;
+  text-align: center;
+}
+
+.home-h3 {
+  font-size: 25px;
+  margin: 5px;
+  filter: drop-shadow(0 0 10px #000000c2);
+  color: white;
+  text-align: center;
+}
+
+.btn-home {
+  font-size: 26px;
+  padding: 10px;
+  margin: 20px;
+  font-weight: bold;
+  background-color: none;
+  border: white;
+  border-radius: 5px;
+  width: 150px;
+
+}
+
+.home-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.chevron-img {
+  width: 45px;
+  margin: 145px 0px 0px 0px;
+}
