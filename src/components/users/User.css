@@ -1,3 +1,4 @@
+
 .login-input {
     display: flex;
     flex-direction: column;
@@ -144,10 +145,11 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 800px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    bottom: 0;
 }
 
 .login-img {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import DoctorList from './components/doctors/DoctorList';
 import AddDoctor from './components/doctors/AddDoctor';
@@ -61,6 +62,7 @@ class App extends Component {
             <Route exact path="/account/:id" component={UserAccount} />
           </Switch>
         </div>
+        <Footer setTheUserInTheAppComponent={this.logMeIn} userInSession={this.state.loggedInUser} />
       </div>
     );
   }

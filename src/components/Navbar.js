@@ -29,21 +29,21 @@ class Navbar extends Component {
       return(
         <div className="nav">
           <div className="logo">
-            <NavLink to={"/"}><img src="./images/ocdoc3.png" width="150px" alt="OcDoc" /></NavLink>
+            <NavLink to={"/"}><img src="./images/ocdoc_white.png" width="150px" alt="OcDoc" /></NavLink>
           </div>
           <nav className="nav-style">
             <ul>
               <li>
-                <NavLink to="/doctors" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Find an ocularist</NavLink>
+                <NavLink to="/doctors" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Find an ocularist</NavLink>
               </li>
               <li>
-                <NavLink to="/doctors/create" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Add your ocularist</NavLink>
+                <NavLink to="/doctors/create" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Add your ocularist</NavLink>
               </li>
               <li>
-                <NavLink to={`/account/${this.state.loggedInUser._id}`} activeStyle={{ fontWeight: 'bold', color: 'blue' }}>View account</NavLink>
+                <NavLink to={`/account/${this.state.loggedInUser._id}`} activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">View account</NavLink>
               </li>
               <li>
-                <NavLink to="/logout" activeStyle={{ fontWeight: 'bold', color: 'blue' }} onClick={() => this.logout()}>Logout</NavLink>
+                <NavLink to="/logout" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} onClick={() => this.logout()}className="navlink" >Logout</NavLink>
               </li>
             </ul>
           </nav>
@@ -53,21 +53,21 @@ class Navbar extends Component {
       return (
         <div className="nav">
           <div className="logo">
-            <img src="./images/ocdoc3.png" width="150px" alt="OcDoc" />
+            <img src="./images/ocdoc_white.png" width="150px" alt="OcDoc" />
           </div>
           <nav className="nav-style">
             <ul>
               <li>
-                <NavLink to="/doctors" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Find an ocularist</NavLink>
+                <NavLink to="/doctors" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Find an ocularist</NavLink>
               </li>
               <li>
-                <NavLink to="/doctors/create" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Add your ocularist</NavLink>
+                <NavLink to="/doctors/create" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Add your ocularist</NavLink>
               </li>
               <li>
-                <NavLink to="/signup" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Signup</NavLink>
+                <NavLink to="/signup" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Signup</NavLink>
               </li>
               <li>
-                <NavLink to="/login" activeStyle={{ fontWeight: 'bold', color: 'blue' }}>Login</NavLink>
+                <NavLink to="/login" activeStyle={{ fontWeight: 'bold', color: 'turquoise' }} className="navlink">Login</NavLink>
               </li>
             </ul>
           </nav>

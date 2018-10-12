@@ -2,6 +2,23 @@
   margin: 80px 0px 50px 0px;
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px 5px 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  background-color: #191919;
+
+  font-family: 'Montserrat';
+}
+
+
 .nav {
   display: flex;
   flex-direction: row;
@@ -15,27 +32,37 @@
   left: 0;
   right: 0;
   z-index: 99;
-  background-color: white;
-  color: #353535;
+  background-color: #191919;
+
   font-family: 'Montserrat';
 }
 
 .nav-style {
   text-align: right;
   margin: 10px;
-  color: #353535;
+
 }
 
 .nav-style li {
   list-style: none;
   display: inline;
   margin: 0 30px 0px 10px;
-  color: #353535;
+
 
 }
 
 .nav-style a {
   text-decoration: none;
+}
+
+.navlink {
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+
 }
 
 .doc {
