@@ -49,7 +49,7 @@ class UserAccount extends Component {
         <div className="page-info">
           <div className="container-log-info">
             <div className="img-container">
-              <img src={this.state.userImage} className="" alt="" />
+              <img src={this.state.userImage} className="user-img" alt="" />
             </div>
             <div className="login-column">
               <div className="form-container">

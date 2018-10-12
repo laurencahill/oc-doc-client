@@ -55,7 +55,7 @@ class DoctorList extends Component {
                     <div className="doc-info">
                       <div className="doc-col">
                         <div className="img-doc-container">
-                          <img src={doctor.docImage} className="doc-img" alt="docImage" />
+                          <img src={doctor.docImage} className="doc-img" />
                         </div>
                         <Link to={`/doctors/${doctor._id}`}><div className="btn-doc">View Details</div></Link>
                       </div>

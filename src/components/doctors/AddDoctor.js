@@ -90,7 +90,7 @@ class AddDoctor extends Component {
           <div className="page-info">
             <div className="container-log-info">
               <div className="img-doc-container">
-                <img src={this.state.docImage} alt="" />
+                <img src={this.state.docImage} />
               </div>
               <div className="login-column">
                 <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className="form-container">

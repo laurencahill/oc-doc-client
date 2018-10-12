@@ -51,7 +51,7 @@ render(){
             <div className="doc-info">
               <div className="doc-col">
                 <div className="img-doc-container-2">
-                  <img src={this.state.docImage} className="doc-img-3" alt="docImage" />
+                  <img src={this.state.docImage} className="doc-img-3" />
                 </div>
               </div>
               <div className="right-col">
@@ -80,7 +80,7 @@ render(){
                 <div>
                   <div className="doc-row">
                     <div className="btn-doc-2" onClick={() => this.deleteDoc()}>Delete Doctor</div>
-                    <Link to={`/doctors/edit/${this.state._id}`}><div className="btn-doc-2">Edit Doctor</div></Link>
+                    <Link to={`/doctors/edit/${this.state._id}`} style={{textDecoration: 'none'}}><div className="btn-doc-2">Edit Doctor</div></Link>
                   </div>
                 </div>
               </div>

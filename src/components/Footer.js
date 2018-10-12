@@ -29,6 +29,7 @@ class Footer extends Component {
       return(
         <div className="footer">
           <nav className="footer-style">
+          <nav className="nav-style">
             <ul>
             <li>
                 <NavLink to="/" activeStyle={{ fontWeight: 'lighter', color: 'white' }}>© Copyright 2018</NavLink>
@@ -40,6 +41,7 @@ class Footer extends Component {
                 <NavLink to="/" activeStyle={{ fontWeight: 'bold', color: 'white' }}>Terms of Service</NavLink>
               </li>
             </ul>
+          </nav>
           </nav>
         </div>
       )

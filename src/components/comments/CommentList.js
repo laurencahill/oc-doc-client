@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 import './Comment.css';
 import '../doctors/Doctor.css';
 

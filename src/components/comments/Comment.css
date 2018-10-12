@@ -8,6 +8,7 @@
     border-radius: 5px;
     width: 275px;
     color: grey;
+    height: 25px;
 }
   
 .comment-row {
@@ -120,14 +121,17 @@
 }
 
 .btn-com {
-    margin: 15px 15px 15px 15px;
+    margin: 25px 15px 15px 15px;
     padding: 10px;
-    color: white;
-    background-color: #2D2F31;
+    /* color: white;
+    background-color: #2D2F31; */
     text-decoration: none;
     font-weight: bold;
     font-size: 12px;
     border-radius: 10px;
     text-transform: uppercase;
+    border-color: none;
+    width: 150px;
+    text-align: center;
 
   }
